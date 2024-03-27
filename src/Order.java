@@ -14,9 +14,6 @@ public class Order {
     public double calculateTotalPrice() {
     	double total = 0.0;
     	for (Item item : items) {
-//            if (item.getGiftCard()) {
-//                continue;
-//            }
         	double price = item.getPrice();
             price -= item.getDiscount().calculateDiscount(price);
         	total += price * item.getQuantity();
