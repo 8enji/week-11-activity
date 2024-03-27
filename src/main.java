@@ -11,12 +11,13 @@ public class main {
         items.add(item1);
         items.add(item2);
         items.add(item3);
+        EmailSender emailSender = new EmailSender();
 
         Order order = new Order(items, "John Doe", "johndoe@example.com");
 
         System.out.println("Total Price: " + order.calculateTotalPrice());
 
-        order.sendConfirmationEmail();
+        emailSender.sendConfirmationEmail(items, order.getCustomerName(), order.getCustomerEmail(), order.calculateTotalPrice());
 
         order.printOrder();
     }
