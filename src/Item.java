@@ -4,13 +4,15 @@ class Item {
     private int quantity;
     private DiscountType discountType;
     private double discountAmount;
+    private boolean giftCard;
 
-    public Item(String name, double price, int quantity, DiscountType discountType, double discountAmount) {
+    public Item(String name, double price, int quantity, DiscountType discountType, double discountAmount, boolean giftCard) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.discountType = discountType;
         this.discountAmount = discountAmount;
+        this.giftCard = giftCard;
     }
 
     public String getName() {
@@ -31,5 +33,9 @@ class Item {
 
     public double getDiscountAmount() {
         return discountAmount;
+    }
+
+    public boolean getGiftCard() {
+        return giftCard;
     }
 }
