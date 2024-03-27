@@ -2,13 +2,11 @@ import java.util.List;
 
 public class Order {
     private List<Item> items;
-    private String customerName;
-    private String customerEmail;
+    private Customer customer;
 
-    public Order(List<Item> items, String customerName, String customerEmail) {
+    public Order(List<Item> items, Customer customer) {
         this.items = items;
-        this.customerName = customerName;
-        this.customerEmail = customerEmail;
+        this.customer = customer;
     }
 
     public double calculateTotalPrice() {
@@ -33,7 +31,7 @@ public class Order {
                 total += tax;
             }
         }
-    	if (hasGiftCard()) {
+    	if (customer.hasGiftCard()) {
         	total -= 10.0; // subtract $10 for gift card
     	}
     	if (total > 100.0) {
@@ -59,31 +57,12 @@ public class Order {
         this.items = items;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
-
-    public boolean hasGiftCard() {
-        boolean has_gift_card = false;
-        for (Item item : items) {
-            if (item.getGiftCard()) {
-                has_gift_card = true;
-                break;
-            }
-        }
-        return has_gift_card;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
    public void printOrder() {
