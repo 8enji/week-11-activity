@@ -9,28 +9,6 @@ public class Order {
         this.customer = customer;
     }
 
-    public double calculateTotalPrice() {
-    	double total = 0.0;
-    	for (Item item : items) {
-        	double price = item.getPrice();
-            price -= item.getDiscount().calculateDiscount(price);
-        	total += price * item.getQuantity();
-       	    if (item instanceof TaxableItem) {
-                TaxableItem taxableItem = (TaxableItem) item;
-                double tax = taxableItem.getTaxRate() / 100.0 * item.getPrice();
-                total += tax;
-            }
-        }
-    	if (customer.hasGiftCard()) {
-        	total -= 10.0; // subtract $10 for gift card
-    	}
-    	if (total > 100.0) {
-        	total *= 0.9; // apply 10% discount for orders over $100
-    	}
-    	return total;
-    }
-
-
     public void addItem(Item item) {
         items.add(item);
     }
@@ -55,18 +33,18 @@ public class Order {
         this.customer = customer;
     }
 
-   public void printOrder() {
+    public void printOrder() {
         System.out.println("Order Details:");
         for (Item item : items) {
             System.out.println(item.getName() + " - " + item.getPrice());
         }
-   }
+    }
 
-   public void addItemsFromAnotherOrder(Order otherOrder) {
+    public void addItemsFromAnotherOrder(Order otherOrder) {
         for (Item item : otherOrder.getItems()) {
             items.add(item);
         }
-   }
+    }
 
 }
 
