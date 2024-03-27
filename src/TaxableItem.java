@@ -2,8 +2,8 @@
 public class TaxableItem extends Item {
     private double taxRate = 7;
     
-    public TaxableItem(String name, double price, int quantity, DiscountType discountType, double discountAmount, boolean giftCard){
-        super(name, price, quantity, discountType, discountAmount, giftCard);
+    public TaxableItem(String name, double price, int quantity, Discount discount, boolean giftCard){
+        super(name, price, quantity, discount, giftCard);
     }
 
     public double getTaxRate(){

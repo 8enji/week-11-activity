@@ -14,18 +14,11 @@ public class Order {
     public double calculateTotalPrice() {
     	double total = 0.0;
     	for (Item item : items) {
+//            if (item.getGiftCard()) {
+//                continue;
+//            }
         	double price = item.getPrice();
-        	switch (item.getDiscountType()) {
-            	case PERCENTAGE:
-                	price -= item.getDiscountAmount() * price;
-                	break;
-            	case AMOUNT:
-                	price -= item.getDiscountAmount();
-                	break;
-            	default:
-                	// no discount
-                	break;
-        	}
+            price -= item.getDiscount().calculateDiscount(price);
         	total += price * item.getQuantity();
        	    if (item instanceof TaxableItem) {
                 TaxableItem taxableItem = (TaxableItem) item;
