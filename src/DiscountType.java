@@ -1,4 +1,5 @@
 public enum DiscountType {
     PERCENTAGE,
-    AMOUNT;
+    AMOUNT,
+    NONE;
 }
