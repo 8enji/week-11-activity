@@ -1,6 +1,6 @@
 class Item {
     private String name;
-    private double price;
+    protected double price;
     private int quantity;
     private Discount discount;
     private boolean giftCard;
@@ -31,5 +31,15 @@ class Item {
 
     public boolean getGiftCard() {
         return giftCard;
+    }
+
+
+    public double calculateDiscountedPrice() {
+        return price - discount.calculateDiscount(price);
+    }
+
+
+    public double calculateTax() {
+        return 0;
     }
 }

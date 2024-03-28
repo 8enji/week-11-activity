@@ -14,4 +14,9 @@ public class TaxableItem extends Item {
             taxRate = rate;
         }
     }
+
+    @Override
+    public double calculateTax() {
+        return price * (taxRate / 100.0);
+    }
 }

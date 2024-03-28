@@ -9,6 +9,25 @@ public class Order {
         this.customer = customer;
     }
 
+
+    public double calculateTotalPrice() {
+        double total = 0.0;
+        for (Item item : items) {
+            double itemPrice = item.calculateDiscountedPrice();
+            total += itemPrice * item.getQuantity();
+            total += item.calculateTax();
+        }
+        if (customer.hasGiftCard()) {
+            total -= 10.0; // subtract $10 for gift card
+        }
+        if (total > 100.0) {
+            total *= 0.9; // apply 10% discount for orders over $100
+        }
+        return total;
+    }
+
+
+
     public void addItem(Item item) {
         items.add(item);
     }
