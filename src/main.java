@@ -13,10 +13,11 @@ public class main {
 
         Customer customer = new Customer("John Doe", "johndoe@example.com", true);
         Order order = new Order(items, customer);
+        OrderPriceCalculator orderPrice = new OrderPriceCalculator(order);
 
-        System.out.println("Total Price: " + order.calculateTotalPrice());
+        System.out.println("Total Price: " + orderPrice.getPrice());
 
-        emailSender.sendConfirmationEmail(items, customer.getCustomerName(), customer.getCustomerEmail(), order.calculateTotalPrice());
+        emailSender.sendConfirmationEmail(items, customer.getCustomerName(), customer.getCustomerEmail(), orderPrice.getPrice());
 
         order.printOrder();
     }

@@ -9,6 +9,7 @@ public class Order {
         this.customer = customer;
     }
 
+
     public double calculateTotalPrice() {
         double total = 0.0;
         for (Item item : items) {
@@ -24,6 +25,7 @@ public class Order {
         }
         return total;
     }
+
 
 
     public void addItem(Item item) {
@@ -50,18 +52,18 @@ public class Order {
         this.customer = customer;
     }
 
-   public void printOrder() {
+    public void printOrder() {
         System.out.println("Order Details:");
         for (Item item : items) {
             System.out.println(item.getName() + " - " + item.getPrice());
         }
-   }
+    }
 
-   public void addItemsFromAnotherOrder(Order otherOrder) {
+    public void addItemsFromAnotherOrder(Order otherOrder) {
         for (Item item : otherOrder.getItems()) {
             items.add(item);
         }
-   }
+    }
 
 }
 
